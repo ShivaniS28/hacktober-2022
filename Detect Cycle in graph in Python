@@ -1,0 +1,21 @@
+def isCycle(self, V, adj):
+        visited=[False]*V
+
+        def dfs(i,parent):
+            visited[i]=True
+            for j in adj[i]:
+                if visited[j]==False:
+                    if dfs(j,i):
+                        return True
+                elif j!=parent:
+                    return True
+            return False
+        
+        
+        
+        for i in range(V):
+            if visited[i]==False:
+                ans=dfs(i,-1)
+            if ans:
+                return 1
+        return 0
